@@ -21,7 +21,6 @@ async function getSpeciesData(req: Request, res: Response) {
 
 app.get('/fish/:species', getSpeciesData);
 const PORT: string | Number = process.env.PORT || 5000;
-const REDIS_PORT: string | Number = process.env.REDIS_PORT || 6379;
 
 app.listen(PORT, () => {
     console.log(`App listening to port ${PORT}`);

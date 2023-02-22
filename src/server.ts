@@ -23,6 +23,7 @@ async function getSpeciesData(req: Request, res: Response) {
         } else {
             results = await getApiData(species);
             await redisClient.set(species, JSON.stringify(results), {
+                // PX: 20000,
                 EX: 20,
                 NX: true,
             });
@@ -40,14 +41,16 @@ app.get('/fish/:species', getSpeciesData);
 const PORT = process.env.PORT || 5000;
 const REDIS_PORT = process.env.REDIS_PORT || 6379;
 
-(async function () {
+async function connectRedis(): Promise<void> {
     redisClient = redis.createClient();
     redisClient.on('error', (err) => {
         console.log(err);
     });
     await redisClient.connect();
-})();
+}
 
-app.listen(PORT, () => {
-    console.log(`App listening to port ${PORT}`);
+connectRedis().then(() => {
+    app.listen(PORT, () => {
+        console.log(`App listening to port ${PORT}`);
+    });
 });

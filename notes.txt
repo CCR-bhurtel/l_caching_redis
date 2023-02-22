@@ -1,0 +1,6 @@
+Why Redis?
+Redis is mainly used for caching.
+Redis is fast, unlike other database which stores the data in hard drive, Redis stores the data
+in memory.
+Also, in redis, data in organized in a simple data structures like linked list, hash maps, sorted set.
+It is simple in nature. (no much features like transactions, foreign keys etc)
