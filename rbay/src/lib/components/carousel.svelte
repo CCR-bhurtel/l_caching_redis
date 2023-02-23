@@ -48,7 +48,7 @@
 		</button>
 	</div>
 	<div class="overflow-hidden relative" bind:this={container}>
-		<div class="flex relative min-h-[200px]" style:right={$offset + 'px'} bind:this={scroller}>
+		<div class="flex relative min-h-[200px] " style:right={$offset + 'px'} bind:this={scroller}>
 			<slot />
 		</div>
 	</div>
